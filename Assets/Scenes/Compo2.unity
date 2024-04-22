@@ -192,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061fa8357a4858c41997816510542f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patchName: play_samples
+  patchName: Compo2
   patchDir: /PdAssets/
-  patch: {fileID: 102900000, guid: 67a3f2781341a7b48b878f454075bbff, type: 3}
+  patch: {fileID: 102900000, guid: 7555fbef6e61844f2bc8a1d91e1af605, type: 3}
   pipePrintToConsole: 0
   pureDataEvents:
     Bang:
