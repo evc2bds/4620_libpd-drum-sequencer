@@ -28,10 +28,12 @@ public class Sequencer : MonoBehaviour
   {
       t += Time.deltaTime;
       float lfo = ControlFunctions.Sin(t, 0.2345f, 0);
-      int[] PitchArray = ControlFunctions.PitchArray(0, new Vector2Int(24, 48), mode);
+      int[] PitchArray = ControlFunctions.PitchArray(0, new Vector2Int(24, 48), mode); //0-11 (0 being c, 11 being b for first parameter)
+          //gennerate range using Vector2Int for second parameter 
+          //
       int pitch_index = Mathf.RoundToInt((lfo * 0.5f + 0.5f) * (PitchArray.Length-1));
 
-      int pitch = PitchArray[pitch_index];
+      int pitch = PitchArray[pitch_index];  
 
       bool trig = ramp > (ramp + Time.deltaTime) % 1;
       ramp = (ramp + Time.deltaTime) % 1;
