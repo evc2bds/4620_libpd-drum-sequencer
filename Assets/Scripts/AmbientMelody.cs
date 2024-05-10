@@ -5,6 +5,8 @@ using UnityEngine;
 public class AmbientMelody : MonoBehaviour
 {
     public LibPdInstance patch;
+    public int currentChordScaleIndex = 0; // Track the index of the current chord scale
+
 
     float ramp;
     float t;
@@ -14,7 +16,7 @@ public class AmbientMelody : MonoBehaviour
     //variable for beat duration in milliseconds (4 beats per second)
     [SerializeField] int beat = 650; 
 
-    List<float> freqValues = new List<float> { 261.6f, 293.6f, 329.6f, 349.2f, 391.9f, 440f, 493.8f, 523.2f };
+    public List<float> freqValues = new List<float> { 261.6f, 293.6f, 329.6f, 349.2f, 391.9f, 440f, 493.8f, 523.2f };
     
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,9 @@ public class AmbientMelody : MonoBehaviour
             patch.SendBang("whole_note");
             //send chordScale to patch
             //choose random item from list
-            float chordScale = freqValues[Random.Range(0, freqValues.Count)];
+            currentChordScaleIndex = Random.Range(0, freqValues.Count); // Update currentChordScaleIndex
+
+            float chordScale = freqValues[currentChordScaleIndex];
             patch.SendFloat("chord_scale", chordScale);
             Debug.Log("chord_scale: " + chordScale);
 
