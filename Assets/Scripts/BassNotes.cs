@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BassNoteCapsules : MonoBehaviour
+public class BassNotes : MonoBehaviour
 {
     public LibPdInstance patch;
 
