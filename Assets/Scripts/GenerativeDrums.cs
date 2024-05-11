@@ -103,36 +103,34 @@ public class GenerativeDrums : MonoBehaviour
                 patch.SendBang("kick_bang");
 
                 // Change the material to yellow when kick is played
-                Material originalMaterial = kickStepsObjs[count].GetComponent<Renderer>().material;
                 kickStepsObjs[count].GetComponent<Renderer>().material = yellowMaterial;
-                StartCoroutine(ResetMaterialAfterDelay(kickStepsObjs[count], originalMaterial, beat));
+                StartCoroutine(ResetMaterialAfterDelay(kickStepsObjs[count], lightBlueMaterial, beat));
 
                 //fix overlap between kick and sticks/high tom
                 if (count == 0) {
                     sticksStepsObjs[7].GetComponent<Renderer>().material = yellowMaterial;
-                    StartCoroutine(ResetMaterialAfterDelay(sticksStepsObjs[7], originalMaterial, beat));
+                    StartCoroutine(ResetMaterialAfterDelay(sticksStepsObjs[7], lightBlueMaterial, beat));
                 }
                 if (count == 7) {
                     highTomStepsObjs[7].GetComponent<Renderer>().material = yellowMaterial;
-                    StartCoroutine(ResetMaterialAfterDelay(highTomStepsObjs[7], originalMaterial, beat));
+                    StartCoroutine(ResetMaterialAfterDelay(highTomStepsObjs[7], lightBlueMaterial, beat));
                 }
             }
             if (snare[count])
             {
                 patch.SendBang("snare_bang");
                 // Change the material to yellow when snare is played
-                Material originalMaterial = snareStepsObjs[count].GetComponent<Renderer>().material;
                 snareStepsObjs[count].GetComponent<Renderer>().material = yellowMaterial;
-                StartCoroutine(ResetMaterialAfterDelay(snareStepsObjs[count], originalMaterial, beat));
+                StartCoroutine(ResetMaterialAfterDelay(snareStepsObjs[count], lightBlueMaterial, beat));
 
                 //fix overlap between snare and sticks/high tom
                 if (count == 0) {
                     sticksStepsObjs[0].GetComponent<Renderer>().material = yellowMaterial;
-                    StartCoroutine(ResetMaterialAfterDelay(sticksStepsObjs[0], originalMaterial, beat));
+                    StartCoroutine(ResetMaterialAfterDelay(sticksStepsObjs[0], lightBlueMaterial, beat));
                 }
                 if (count == 7) {
                     highTomStepsObjs[0].GetComponent<Renderer>().material = yellowMaterial;
-                    StartCoroutine(ResetMaterialAfterDelay(highTomStepsObjs[0], originalMaterial, beat));
+                    StartCoroutine(ResetMaterialAfterDelay(highTomStepsObjs[0], lightBlueMaterial, beat));
                 }
 
             }
@@ -140,18 +138,16 @@ public class GenerativeDrums : MonoBehaviour
             {
                 patch.SendBang("sticks_bang");
                 // Change the material to yellow when sticks is played
-                Material originalMaterial = sticksStepsObjs[count].GetComponent<Renderer>().material;
                 sticksStepsObjs[count].GetComponent<Renderer>().material = yellowMaterial;
-                StartCoroutine(ResetMaterialAfterDelay(sticksStepsObjs[count], originalMaterial, beat));
+                StartCoroutine(ResetMaterialAfterDelay(sticksStepsObjs[count], lightBlueMaterial, beat));
 
             }
             if (toms[count])
             {
                 patch.SendBang("toms_bang");
                 // Change the material to yellow when sticks is played
-                Material originalMaterial = highTomStepsObjs[count].GetComponent<Renderer>().material;
                 highTomStepsObjs[count].GetComponent<Renderer>().material = yellowMaterial;
-                StartCoroutine(ResetMaterialAfterDelay(highTomStepsObjs[count], originalMaterial, beat));
+                StartCoroutine(ResetMaterialAfterDelay(highTomStepsObjs[count], lightBlueMaterial, beat));    
             }
 
             count = (count + 1) % kick.Count;
@@ -207,6 +203,8 @@ public class GenerativeDrums : MonoBehaviour
         return pattern;
     }
 
+
+    //After cube turns yellow when that step of the drum is played, switch back to orignal color after 1s 
     IEnumerator ResetMaterialAfterDelay(GameObject obj, Material originalMaterial, int delayMs)
     {
         yield return new WaitForSeconds(delayMs / 1000f); // Convert milliseconds to seconds
